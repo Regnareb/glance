@@ -62,7 +62,6 @@ const (
 	dockerContainerLabelName        = "glance.name"
 	dockerContainerLabelURL         = "glance.url"
 	dockerContainerLabelDescription = "glance.description"
-	dockerContainerLabelSameTab     = "glance.same-tab"
 	dockerContainerLabelIcon        = "glance.icon"
 	dockerContainerLabelID          = "glance.id"
 	dockerContainerLabelParent      = "glance.parent"
@@ -113,7 +112,6 @@ func (l *dockerContainerLabels) getOrDefault(label, def string) string {
 type dockerContainer struct {
 	Name        string
 	URL         string
-	SameTab     bool
 	Image       string
 	State       string
 	StateText   string
@@ -173,7 +171,6 @@ func fetchDockerContainers(
 			Name:        deriveDockerContainerName(container, formatNames),
 			URL:         container.Labels.getOrDefault(dockerContainerLabelURL, ""),
 			Description: container.Labels.getOrDefault(dockerContainerLabelDescription, ""),
-			SameTab:     stringToBool(container.Labels.getOrDefault(dockerContainerLabelSameTab, "false")),
 			Image:       container.Image,
 			State:       strings.ToLower(container.State),
 			StateText:   strings.ToLower(container.Status),
