@@ -4,10 +4,10 @@
 <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ .CollapseAfter }}">
     {{ range .ChangeDetections }}
     <li>
-        <a class="size-h4 block text-truncate color-highlight" href="{{ .URL }}" {{ if .Target }}target="{{ .Target }}"{{ end }} rel="noreferrer">{{ .Title }}</a>
+        <a class="size-h4 block text-truncate color-highlight" href="{{ .URL }}" rel="noreferrer">{{ .Title }}</a>
         <ul class="list-horizontal-text">
             <li {{ dynamicRelativeTimeAttrs .LastChanged }}></li>
-            <li class="shrink min-width-0"><a class="visited-indicator" href="{{ .DiffURL }}" {{ if .Target }}target="{{ .Target }}"{{ end }} rel="noreferrer">diff:{{ .PreviousHash }}</a></li>
+            <li class="shrink min-width-0"><a class="visited-indicator" href="{{ .DiffURL }}" rel="noreferrer">diff:{{ .PreviousHash }}</a></li>
         </ul>
     </li>
     {{ else }}
